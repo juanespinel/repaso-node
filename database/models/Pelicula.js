@@ -29,7 +29,10 @@ module.exports = function(sequelize, dataTypes) {
     
     let config = {
         tableName: "movies",
-        timestamps: false
+        timestamps: true,
+        // createdAt: 'created_at',
+        // updatedAt: 'updated_at',
+        underscored: true
     }
     
     let Pelicula = sequelize.define(alias, cols, config);
@@ -44,7 +47,10 @@ module.exports = function(sequelize, dataTypes) {
             through: "actor_movie",
             foreignKey: "movie_id",
             otherKey: "actor_id",
-            timestamps: false
+            timestamps: true,
+            // createdAt: 'created_at',
+            // updatedAt: 'updated_at',
+            underscored: true
         });
     }
     return Pelicula

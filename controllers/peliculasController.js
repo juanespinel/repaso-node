@@ -13,7 +13,7 @@ let peliculasController = {
              title: req.body.titulo,
              awards: req.body.premios,
              release_date: req.body.fecha_estreno,
-             genre_id: req.body.genro,
+             genre_id: req.body.genero,
              length: req.body.duracion,
              rating: req.body.rating
         })
@@ -50,15 +50,17 @@ let peliculasController = {
             title: req.body.titulo,
             awards: req.body.premios,
             release_date: req.body.fecha_estreno,
-            genre_id: req.body.genro,
+            genre_id: req.body.genero,
             length: req.body.duracion,
             rating: req.body.rating
        }, {
            where: {
                id: req.params.id
            }
-       });
-       res.redirect("/peliculas/" + req.params.id)
+       })
+       .then(function(resultado) {
+           res.redirect("/peliculas/" + req.params.id)
+       })
     },
     borrar: function(req, res) {
         db.Pelicula.destroy({
@@ -66,8 +68,10 @@ let peliculasController = {
                 id: req.params.id
             }
         })
+        .then(function(resultado) {
+            res.redirect("/peliculas");
+        })
         
-        res.redirect("/peliculas");
     }
 }
 
