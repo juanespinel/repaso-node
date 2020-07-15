@@ -27,7 +27,7 @@ module.exports = function(sequelize, dataTypes) {
             as: "peliculas", 
             through: "actor_movie",
             foreignKey: "actor_id",
-            foreignKey: "movie_id",
+            otherKey: "movie_id",
             timestamps: false
         });
     }
